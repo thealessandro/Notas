@@ -1,0 +1,134 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ic_bacground"
+    tools:context="com.kyxadious.notas.NovaNotaActivity$PlaceholderFragment" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout_data_hora"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_margin="10dp"
+            android:background="#f7f4b4"
+            android:orientation="vertical" >
+
+            <!-- Data e hora atual -->
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_hora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <!-- linha -->
+
+            <View
+                android:id="@+id/line_top"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#80b49c" />
+
+            <!-- EditeText com as anotações -->
+
+            <com.kyxadious.notas.model.LinedEditText
+                android:id="@+id/ed_nova_nota"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#f7f4b4"
+                android:gravity="left|right"
+                android:lineSpacingExtra="10dp"
+                android:lineSpacingMultiplier="1"
+                android:lines="100"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/quebra_de_linha"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Seleconar a cor da nota -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <!-- Rosa -->
+
+            <Button
+                android:id="@+id/bt_cor_rosa"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="#f8e0e8"
+                android:onClick="corNotaRosa" />
+
+            <!-- Flamingo -->
+
+            <Button
+                android:id="@+id/bt_cor_flamingo"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="#f8e8d0"
+                android:onClick="corNotaFlamingo" />
+
+            <!-- Amarelo -->
+
+            <Button
+                android:id="@+id/bt_cor_amarelo"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="#f7f4b4"
+                android:onClick="corNotaAmarelo" />
+
+            <!-- Verde -->
+
+            <Button
+                android:id="@+id/bt_cor_verde"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="#e0f8d8"
+                android:onClick="corNotaVerde" />
+
+            <!-- Roxo -->
+
+            <Button
+                android:id="@+id/bt_cor_roxo"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:background="#e8e8f8"
+                android:onClick="corNotaRoxo" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

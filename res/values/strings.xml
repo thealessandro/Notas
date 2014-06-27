@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Notas</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="criar_nota">Criar nova nota</string>
+    <string name="title_activity_nova_nota">Nova Nota</string>
+    <string name="quebra_de_linha">\n\n\n\n\n\n</string>
+  
+
+</resources>
