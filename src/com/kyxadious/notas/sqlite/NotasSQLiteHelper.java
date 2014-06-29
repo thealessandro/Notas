@@ -7,8 +7,30 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class NotasSQLiteHelper extends SQLiteOpenHelper{
 	
-	public static final String DATABASE_NAME = "notas.db";
-	public static final int DATABASE_VERSION = 1; 
+	
+	public static final String TABELA = "nota";
+	public static final String ID = "id";
+	public static final String DATA = "data";
+	public static final String HORA = "hora";
+	public static final String TEXTO = "texto";
+	public static final String COR = "cor";
+	public static final String[] COLUNAS = { ID, DATA, HORA, TEXTO, COR };
+	
+	
+	private static final String DATABASE_NAME = "notas.db";
+	private static final int DATABASE_VERSION = 1;
+	
+	
+	private static final String DATABASE_DROP = "DROP TABLE IF EXISTS " + TABELA;
+	private static final String DATABASE_CREATE = "CREATE TABLE " + TABELA 
+													+ "("
+													+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+													+ DATA + " TEXT NOT NULL, "
+													+ HORA + " TEXT NOT NULL, " 
+													+ TEXTO + " TEXT NOT NULL, "
+													+ COR + " TEXT NOT NULL"
+													+ ");";
+	
 
 	public NotasSQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -16,14 +38,32 @@ public class NotasSQLiteHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
+		db.execSQL(DATABASE_CREATE);
 		
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
-		
+		db.execSQL(DATABASE_DROP);
+		onCreate(db);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

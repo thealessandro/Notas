@@ -8,8 +8,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
+import android.text.style.BackgroundColorSpan;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -63,7 +67,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 		
 	}
 	
-	public void corNotaRosa(View view) {
+	public void corNotaRosa(View view) {	
 		dataHoraLinearLayout.setBackground(view.getBackground());
 		notaEditText.setBackground(view.getBackground());
 	}

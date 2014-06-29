@@ -1,29 +1,45 @@
 package com.kyxadious.notas.model;
 
-import java.util.Date;
-
 public class Nota {
 
-	private Date data;
+	private int id;
+	private String data;
 	private String hora;
 	private String texto;
+	private String cor;
 
 	public Nota() {
 
 	}
 
-	public Nota(Date data, String hora, String texto) {
-		super();
+	public Nota(String data, String hora, String texto, String cor) {
 		this.data = data;
 		this.hora = hora;
 		this.texto = texto;
+		this.cor = cor;
 	}
 
-	public Date getData() {
+	public Nota(int id, String data, String hora, String texto, String cor) {
+		this.id = id;
+		this.data = data;
+		this.hora = hora;
+		this.texto = texto;
+		this.cor = cor;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
@@ -41,6 +57,14 @@ public class Nota {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
 }
