@@ -68,29 +68,38 @@ public class NovaNotaActivity extends ActionBarActivity {
 	}
 	
 	public void corNotaRosa(View view) {	
-		dataHoraLinearLayout.setBackground(view.getBackground());
-		notaEditText.setBackground(view.getBackground());
+		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f8e0e8"));
+		notaEditText.setBackgroundColor(Color.parseColor("#f8e0e8"));
 	}
 	
 	public void corNotaFlamingo(View view) {
-		dataHoraLinearLayout.setBackground(view.getBackground());
-		notaEditText.setBackground(view.getBackground());
+		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f8e8d0"));
+		notaEditText.setBackgroundColor(Color.parseColor("#f8e8d0"));
 	}
 	
 	public void corNotaAmarelo(View view) {
-		dataHoraLinearLayout.setBackground(view.getBackground());
-		notaEditText.setBackground(view.getBackground());
+		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f7f4b4"));
+		notaEditText.setBackgroundColor(Color.parseColor("#f7f4b4"));
 	}
 	
 	public void corNotaVerde(View view) {
-		dataHoraLinearLayout.setBackground(view.getBackground());
-		notaEditText.setBackground(view.getBackground());
+		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#e0f8d8"));
+		notaEditText.setBackgroundColor(Color.parseColor("#e0f8d8"));
 	}
 	
 	public void corNotaRoxo(View view) {
-		dataHoraLinearLayout.setBackground(view.getBackground());
-		notaEditText.setBackground(view.getBackground());
+		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#e8e8f8"));
+		notaEditText.setBackgroundColor(Color.parseColor("#e8e8f8"));
 	}
+	
+	public void salvarNota(View view) {
+		
+	}
+	
+	public void cancelarNota(View view) {
+		
+	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

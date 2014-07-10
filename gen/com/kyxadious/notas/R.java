@@ -1192,16 +1192,18 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060019;
         public static final int action_menu_presenter=0x7f06001a;
         public static final int action_mode_close_button=0x7f060027;
-        public static final int action_settings=0x7f06004d;
+        public static final int action_settings=0x7f060052;
         public static final int activity_chooser_view_content=0x7f060028;
         public static final int adView=0x7f060042;
         public static final int always=0x7f06000f;
         public static final int beginning=0x7f060014;
+        public static final int bt_cancelarNota=0x7f06004e;
         public static final int bt_cor_amarelo=0x7f06004a;
         public static final int bt_cor_flamingo=0x7f060049;
         public static final int bt_cor_rosa=0x7f060048;
         public static final int bt_cor_roxo=0x7f06004c;
         public static final int bt_cor_verde=0x7f06004b;
+        public static final int bt_salvarNota=0x7f06004d;
         public static final int checkbox=0x7f060030;
         public static final int collapseActionView=0x7f060011;
         public static final int default_activity_button=0x7f06002b;
@@ -1256,6 +1258,9 @@ containing a value of this type.
         public static final int tv_criar_nota=0x7f060040;
         public static final int tv_data=0x7f060044;
         public static final int tv_hora=0x7f060045;
+        public static final int tv_item_hora=0x7f060050;
+        public static final int tv_item_index=0x7f06004f;
+        public static final int tv_item_texto=0x7f060051;
         public static final int up=0x7f060024;
         public static final int useLogo=0x7f060007;
         public static final int withText=0x7f060010;
@@ -1312,7 +1317,8 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int activity_main=0x7f030017;
         public static final int activity_nova_nota=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int item=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int assdsd=0x7f0c0000;
@@ -1385,6 +1391,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f070014;
+        public static final int cancelar=0x7f07002f;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -1462,6 +1469,7 @@ containing a value of this type.
          */
         public static final int location_client_powered_by_google=0x7f07001a;
         public static final int quebra_de_linha=0x7f07002d;
+        public static final int salvar=0x7f07002e;
         public static final int title_activity_nova_nota=0x7f07002c;
     }
     public static final class style {

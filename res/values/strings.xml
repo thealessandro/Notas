@@ -7,6 +7,7 @@
     <string name="criar_nota">Criar nova nota</string>
     <string name="title_activity_nova_nota">Nova Nota</string>
     <string name="quebra_de_linha">\n\n\n\n\n\n</string>
-  
+  	<string name="salvar">Salvar</string>
+  	<string name="cancelar">Cancelar</string>
 
 </resources>

@@ -297,16 +297,18 @@ int id action_context_bar 0x7f060020
 int id action_menu_divider 0x7f060019
 int id action_menu_presenter 0x7f06001a
 int id action_mode_close_button 0x7f060027
-int id action_settings 0x7f06004d
+int id action_settings 0x7f060052
 int id activity_chooser_view_content 0x7f060028
 int id adView 0x7f060042
 int id always 0x7f06000f
 int id beginning 0x7f060014
+int id bt_cancelarNota 0x7f06004e
 int id bt_cor_amarelo 0x7f06004a
 int id bt_cor_flamingo 0x7f060049
 int id bt_cor_rosa 0x7f060048
 int id bt_cor_roxo 0x7f06004c
 int id bt_cor_verde 0x7f06004b
+int id bt_salvarNota 0x7f06004d
 int id checkbox 0x7f060030
 int id collapseActionView 0x7f060011
 int id default_activity_button 0x7f06002b
@@ -361,6 +363,9 @@ int id top_action_bar 0x7f060023
 int id tv_criar_nota 0x7f060040
 int id tv_data 0x7f060044
 int id tv_hora 0x7f060045
+int id tv_item_hora 0x7f060050
+int id tv_item_index 0x7f06004f
+int id tv_item_texto 0x7f060051
 int id up 0x7f060024
 int id useLogo 0x7f060007
 int id withText 0x7f060010
@@ -391,7 +396,8 @@ int layout abc_search_dropdown_item_icons_2line 0x7f030015
 int layout abc_search_view 0x7f030016
 int layout activity_main 0x7f030017
 int layout activity_nova_nota 0x7f030018
-int layout support_simple_spinner_dropdown_item 0x7f030019
+int layout item 0x7f030019
+int layout support_simple_spinner_dropdown_item 0x7f03001a
 int menu assdsd 0x7f0c0000
 int menu main 0x7f0c0001
 int menu nova_nota 0x7f0c0002
@@ -416,6 +422,7 @@ int string auth_client_needs_update_title 0x7f070017
 int string auth_client_play_services_err_notification_msg 0x7f070018
 int string auth_client_requested_by_msg 0x7f070019
 int string auth_client_using_bad_version_title 0x7f070014
+int string cancelar 0x7f07002f
 int string common_google_play_services_enable_button 0x7f070006
 int string common_google_play_services_enable_text 0x7f070005
 int string common_google_play_services_enable_title 0x7f070004
@@ -440,6 +447,7 @@ int string criar_nota 0x7f07002b
 int string hello_world 0x7f070029
 int string location_client_powered_by_google 0x7f07001a
 int string quebra_de_linha 0x7f07002d
+int string salvar 0x7f07002e
 int string title_activity_nova_nota 0x7f07002c
 int style AppBaseTheme 0x7f0b0083
 int style AppTheme 0x7f0b0084
