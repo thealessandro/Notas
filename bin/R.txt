@@ -297,7 +297,7 @@ int id action_context_bar 0x7f060020
 int id action_menu_divider 0x7f060019
 int id action_menu_presenter 0x7f06001a
 int id action_mode_close_button 0x7f060027
-int id action_settings 0x7f060052
+int id action_settings 0x7f060053
 int id activity_chooser_view_content 0x7f060028
 int id adView 0x7f060042
 int id always 0x7f06000f
@@ -363,9 +363,10 @@ int id top_action_bar 0x7f060023
 int id tv_criar_nota 0x7f060040
 int id tv_data 0x7f060044
 int id tv_hora 0x7f060045
-int id tv_item_hora 0x7f060050
+int id tv_item_data 0x7f060050
+int id tv_item_hora 0x7f060051
 int id tv_item_index 0x7f06004f
-int id tv_item_texto 0x7f060051
+int id tv_item_texto 0x7f060052
 int id up 0x7f060024
 int id useLogo 0x7f060007
 int id withText 0x7f060010

@@ -2,35 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="10dp"
+    android:padding="15dp"
+    android:background="#f7f4b4"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tv_item_index"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_item_index"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true" />
-
-        <TextView
-            android:id="@+id/tv_item_hora"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_item_data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/tv_item_hora"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_item_texto"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="#000"
+        android:textStyle="bold" />
 
 </LinearLayout>
-
-
-
-

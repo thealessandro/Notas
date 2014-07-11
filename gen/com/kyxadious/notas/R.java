@@ -1192,7 +1192,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060019;
         public static final int action_menu_presenter=0x7f06001a;
         public static final int action_mode_close_button=0x7f060027;
-        public static final int action_settings=0x7f060052;
+        public static final int action_settings=0x7f060053;
         public static final int activity_chooser_view_content=0x7f060028;
         public static final int adView=0x7f060042;
         public static final int always=0x7f06000f;
@@ -1258,9 +1258,10 @@ containing a value of this type.
         public static final int tv_criar_nota=0x7f060040;
         public static final int tv_data=0x7f060044;
         public static final int tv_hora=0x7f060045;
-        public static final int tv_item_hora=0x7f060050;
+        public static final int tv_item_data=0x7f060050;
+        public static final int tv_item_hora=0x7f060051;
         public static final int tv_item_index=0x7f06004f;
-        public static final int tv_item_texto=0x7f060051;
+        public static final int tv_item_texto=0x7f060052;
         public static final int up=0x7f060024;
         public static final int useLogo=0x7f060007;
         public static final int withText=0x7f060010;

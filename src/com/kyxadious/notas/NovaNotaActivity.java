@@ -4,11 +4,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.kyxadious.notas.dao.NotaDAO;
+import com.kyxadious.notas.model.Nota;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.text.style.BackgroundColorSpan;
+import android.util.Log;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -19,18 +23,21 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.os.Build;
 
 public class NovaNotaActivity extends ActionBarActivity {
 
-	private EditText notaEditText;
+	
 	private LinearLayout dataHoraLinearLayout;
 	private TextView dataTextView;
 	private TextView horaTextView;
+	private EditText novaNotaEditText;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +51,6 @@ public class NovaNotaActivity extends ActionBarActivity {
 		
 		/* LinearLayout data e hora */
 		dataHoraLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_data_hora);
-	
-		/* EditeText nova nota */
-		notaEditText = (EditText) findViewById(R.id.ed_nova_nota);
 		
 		/* TextView */
 		dataTextView = (TextView) findViewById(R.id.tv_data);
@@ -62,6 +66,17 @@ public class NovaNotaActivity extends ActionBarActivity {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		dataTextView.setText(dateFormat.format(hojeDate).toString());
 		
+		/* EditeText nova nota */
+		novaNotaEditText = (EditText) findViewById(R.id.ed_nova_nota);
+		novaNotaEditText.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				novaNotaEditText.setFocusable(true);
+				novaNotaEditText.setFocusableInTouchMode(true);
+			}
+		});
+		
 		
 		
 		
@@ -69,31 +84,54 @@ public class NovaNotaActivity extends ActionBarActivity {
 	
 	public void corNotaRosa(View view) {	
 		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f8e0e8"));
-		notaEditText.setBackgroundColor(Color.parseColor("#f8e0e8"));
+		novaNotaEditText.setBackgroundColor(Color.parseColor("#f8e0e8"));
 	}
 	
 	public void corNotaFlamingo(View view) {
 		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f8e8d0"));
-		notaEditText.setBackgroundColor(Color.parseColor("#f8e8d0"));
+		novaNotaEditText.setBackgroundColor(Color.parseColor("#f8e8d0"));
 	}
 	
 	public void corNotaAmarelo(View view) {
 		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f7f4b4"));
-		notaEditText.setBackgroundColor(Color.parseColor("#f7f4b4"));
+		novaNotaEditText.setBackgroundColor(Color.parseColor("#f7f4b4"));
 	}
 	
 	public void corNotaVerde(View view) {
 		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#e0f8d8"));
-		notaEditText.setBackgroundColor(Color.parseColor("#e0f8d8"));
+		novaNotaEditText.setBackgroundColor(Color.parseColor("#e0f8d8"));
 	}
 	
 	public void corNotaRoxo(View view) {
 		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#e8e8f8"));
-		notaEditText.setBackgroundColor(Color.parseColor("#e8e8f8"));
+		novaNotaEditText.setBackgroundColor(Color.parseColor("#e8e8f8"));
 	}
 	
 	public void salvarNota(View view) {
 		
+		String texto = novaNotaEditText.getText().toString();
+		texto = texto.replace("\n","");
+		
+		Log.d("TAMANHO DO TEXTO", String.valueOf(texto.length()));
+		Log.d("TEXTO", texto);
+		
+		if (texto.length() != 0) {
+		    Nota nota = new Nota();
+		    nota.setData(dataTextView.getText().toString());
+		    nota.setHora(horaTextView.getText().toString());
+		    nota.setTexto(texto);
+		
+		    NotaDAO notaDAO = new NotaDAO(getApplicationContext());
+		    notaDAO.addNota(nota);
+		
+		    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		    startActivity(intent);
+		
+		} else { 
+		    Toast.makeText(getApplicationContext(), "Escreva algo na nota", Toast.LENGTH_LONG).show();
+		    
+		}
 	}
 	
 	public void cancelarNota(View view) {

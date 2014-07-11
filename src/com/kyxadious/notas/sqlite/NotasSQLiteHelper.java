@@ -13,8 +13,7 @@ public class NotasSQLiteHelper extends SQLiteOpenHelper{
 	public static final String DATA = "data";
 	public static final String HORA = "hora";
 	public static final String TEXTO = "texto";
-	public static final String COR = "cor";
-	public static final String[] COLUNAS = { ID, DATA, HORA, TEXTO, COR };
+	public static final String[] COLUNAS = { ID, DATA, HORA, TEXTO };
 	
 	
 	private static final String DATABASE_NAME = "notas.db";
@@ -25,17 +24,18 @@ public class NotasSQLiteHelper extends SQLiteOpenHelper{
 	private static final String DATABASE_CREATE = "CREATE TABLE " + TABELA 
 													+ "("
 													+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-													+ DATA + " TEXT NOT NULL, "
-													+ HORA + " TEXT NOT NULL, " 
-													+ TEXTO + " TEXT NOT NULL, "
-													+ COR + " TEXT NOT NULL"
-													+ ");";
+													+ DATA + " TEXT, "
+													+ HORA + " TEXT, " 
+													+ TEXTO + " TEXT "
+													+ ")";
 	
 
 	public NotasSQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		//context.deleteDatabase(DATABASE_NAME);
 	}
 
+	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(DATABASE_CREATE);

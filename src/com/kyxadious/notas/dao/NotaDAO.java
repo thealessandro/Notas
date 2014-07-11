@@ -9,11 +9,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class NotaDAO {
 
 	private SQLiteDatabase database;
 	private NotasSQLiteHelper dbHelper;
+	
+	private static final String TAG = NotaDAO.class.getSimpleName();
 	
 	public NotaDAO(Context context) {
 		dbHelper = new NotasSQLiteHelper(context);
@@ -39,9 +42,10 @@ public class NotaDAO {
 		values.put(NotasSQLiteHelper.DATA, nota.getData());
 		values.put(NotasSQLiteHelper.HORA, nota.getHora());
 		values.put(NotasSQLiteHelper.TEXTO, nota.getTexto());
-		values.put(NotasSQLiteHelper.COR, nota.getCor());
 		
-		database.insert(NotasSQLiteHelper.TABELA, null, values);
+		long ok = database.insert(NotasSQLiteHelper.TABELA, null, values);
+		
+		Log.d(TAG, "Add nova nota: "+ ok);
 		
 		closeDatabase();
 	}
@@ -83,8 +87,7 @@ public class NotaDAO {
 		String query = "SELECT " + NotasSQLiteHelper.ID + ", "
 								  + NotasSQLiteHelper.DATA + ", "
 								  + NotasSQLiteHelper.HORA + ", "
-								  + NotasSQLiteHelper.TEXTO + ", "
-								  + NotasSQLiteHelper.COR + " FROM "
+								  + NotasSQLiteHelper.TEXTO + " FROM "
 								  + NotasSQLiteHelper.TABELA;
 		
 		openReadableDatabase();
@@ -98,7 +101,6 @@ public class NotaDAO {
 				nota.setData(cursor.getString(1));
 				nota.setHora(cursor.getString(2));
 				nota.setTexto(cursor.getString(3));
-				nota.setCor(cursor.getString(4));
 						
 				notas.add(nota);
 			} while (cursor.moveToNext());
@@ -120,7 +122,6 @@ public class NotaDAO {
 		values.put(NotasSQLiteHelper.DATA, nota.getData());
 		values.put(NotasSQLiteHelper.HORA, nota.getHora());
 		values.put(NotasSQLiteHelper.TEXTO, nota.getTexto());
-		values.put(NotasSQLiteHelper.COR, nota.getCor());
 		
 		database.update(NotasSQLiteHelper.TABELA, 
 						values, 
@@ -131,12 +132,12 @@ public class NotaDAO {
 	}
 	
 	/* Deletar Nota */
-	public void deletarNota(int id) {
+	public void deletarNota(String id) {
 		openWritableDatabase();
 		
 		database.delete(NotasSQLiteHelper.TABELA, 
 						NotasSQLiteHelper.ID + " = ?", 
-						new String[] { String.valueOf(id) } );
+						new String[] { id } );
 		
 		closeDatabase();
 	}
