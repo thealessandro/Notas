@@ -13,6 +13,8 @@ import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.text.style.BackgroundColorSpan;
 import android.util.Log;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -107,6 +109,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 		novaNotaEditText.setBackgroundColor(Color.parseColor("#e8e8f8"));
 	}
 	
+	/* Botão salvar nova nota */
 	public void salvarNota(View view) {
 		
 		String texto = novaNotaEditText.getText().toString();
@@ -124,6 +127,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 		    NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		    notaDAO.addNota(nota);
 		
+		    /* Voltar para tela principal para listar todas as notas */
 		    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		    startActivity(intent);
@@ -134,7 +138,25 @@ public class NovaNotaActivity extends ActionBarActivity {
 		}
 	}
 	
+	/* Botão cancelar nova nota */
 	public void cancelarNota(View view) {
+		
+		AlertDialog.Builder mensagemBuilder = new AlertDialog.Builder(this);
+		mensagemBuilder.setMessage("Você tem certeza que quer cancelar essa nota?");
+		mensagemBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				/* Voltar para tela principal para listar todas as notas */
+				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				
+			}
+		});
+		
+		mensagemBuilder.setNegativeButton("Não", null);
+		mensagemBuilder.show();
 		
 	}
 	
@@ -143,7 +165,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.nova_nota, menu);
+		//getMenuInflater().inflate(R.menu.nova_nota, menu);
 		return true;
 	}
 

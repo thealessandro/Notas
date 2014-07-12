@@ -12,8 +12,15 @@ import com.kyxadious.notas.sqlite.NotasSQLiteHelper;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,17 +41,19 @@ public class MainActivity extends ActionBarActivity {
 	private ImageView imageViewIconeCriarNota;
 	private ListView listViewNotas;
 	private ArrayAdapterNota adapterNota;
+	private AdMobBroadcastReceiver adMobBroadcastReceiver;
+	
+	private static final String TAG = MainActivity.class.getSimpleName();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);		
-		
+			
 		/* AdMob */
-		adView = (AdView) findViewById(R.id.adView);
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.loadAd(adRequest);		
-	
+		adMobBroadcastReceiver = new AdMobBroadcastReceiver();
+		registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+		
 		
 		// Botão para criar nova nota 
 		imageViewIconeCriarNota = (ImageView) findViewById(R.id.iv_plus_note);
@@ -52,6 +61,9 @@ public class MainActivity extends ActionBarActivity {
 			
 			@Override
 			public void onClick(View v) {
+				/* tirar o registro o BroadcastReceiver */
+				unregisterReceiver(adMobBroadcastReceiver);
+				
 				Intent intent = new Intent(getApplicationContext(), NovaNotaActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
@@ -85,6 +97,8 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 		
+		
+		
 	}
 
 	@Override
@@ -101,5 +115,70 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}	
+	
+	private class AdMobBroadcastReceiver extends BroadcastReceiver{
 
+		@Override
+		public void onReceive(Context context, Intent intent) {
+		    boolean noConnectivity = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+	        String reason = intent.getStringExtra(ConnectivityManager.EXTRA_REASON);
+	        boolean isFailover = intent.getBooleanExtra(ConnectivityManager.EXTRA_IS_FAILOVER, false);
+
+	        @SuppressWarnings("deprecation")
+		    NetworkInfo currentNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
+	        NetworkInfo otherNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
+
+	        /* AdMob */
+	        adView = (AdView) findViewById(R.id.adView);
+	         
+	        if (currentNetworkInfo.isConnected()) {      
+	        	AdRequest adRequest = new AdRequest.Builder().build();
+	        	adView.loadAd(adRequest);
+	        	
+	        	if (adView.getVisibility() == View.GONE) { 
+	                adView.setVisibility(View.VISIBLE);
+	        	}
+	             
+	        } else {
+	        	if (adView.getVisibility() == View.VISIBLE) {
+	       		   adView.setVisibility(View.GONE);
+	       		
+	        	}
+	       
+	        }
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
