@@ -69,7 +69,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 		dataTextView.setText(dateFormat.format(hojeDate).toString());
 		
 		/* EditeText nova nota */
-		novaNotaEditText = (EditText) findViewById(R.id.ed_nova_nota);
+		novaNotaEditText = (EditText) findViewById(R.id.ed_nova_nota);		
 		novaNotaEditText.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -113,10 +113,6 @@ public class NovaNotaActivity extends ActionBarActivity {
 	public void salvarNota(View view) {
 		
 		String texto = novaNotaEditText.getText().toString();
-		texto = texto.replace("\n","");
-		
-		Log.d("TAMANHO DO TEXTO", String.valueOf(texto.length()));
-		Log.d("TEXTO", texto);
 		
 		if (texto.length() != 0) {
 		    Nota nota = new Nota();

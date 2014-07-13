@@ -1,8 +1,9 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#d7a874" >
+    android:background="#c98c5f"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -15,7 +16,8 @@
         <LinearLayout
             android:id="@+id/linear_layout_data_hora"
             android:layout_width="fill_parent"
-            android:layout_height="300dp"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:background="#f7f4b4"
             android:orientation="vertical" >
 
@@ -57,10 +59,10 @@
 
             <!-- EditeText com as anotações -->
 
-            <com.kyxadious.notas.model.LinedEditText
+            <EditText
                 android:id="@+id/ed_nova_nota"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:background="#f7f4b4"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -70,7 +72,6 @@
                 android:lines="100"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/quebra_de_linha"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -142,7 +143,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <Button
@@ -171,4 +173,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

@@ -13,6 +13,7 @@ import com.kyxadious.notas.sqlite.NotasSQLiteHelper;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils.TruncateAt;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -52,7 +54,7 @@ public class MainActivity extends ActionBarActivity {
 			
 		/* AdMob */
 		adMobBroadcastReceiver = new AdMobBroadcastReceiver();
-		registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+		this.registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 		
 		
 		// Botão para criar nova nota 
@@ -79,8 +81,27 @@ public class MainActivity extends ActionBarActivity {
 	    adapterNota = new ArrayAdapterNota(getApplicationContext(), R.layout.item, notas);
 		listViewNotas.setAdapter(adapterNota);
 		
+		/* Click: visualizando uma nota */
+		listViewNotas.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				
+				TextView textViewTexto = (TextView) view.findViewById(R.id.tv_item_texto);
+				
+				/* Ellipsize (...) e Single Line*/
+				if (textViewTexto.getEllipsize() == TruncateAt.END) {
+				    textViewTexto.setEllipsize(null);
+					textViewTexto.setSingleLine(false);
+				} else { 
+				    textViewTexto.setEllipsize(TruncateAt.END);
+					textViewTexto.setSingleLine(true);
+				}	
+				
+			}
+		});
 		
-		/* Deletando uma nota */
+		/* Click longo: deletando uma nota */
 		listViewNotas.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -128,22 +149,18 @@ public class MainActivity extends ActionBarActivity {
 		    NetworkInfo currentNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
 	        NetworkInfo otherNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
 
-	        /* AdMob */
-	        adView = (AdView) findViewById(R.id.adView);
-	         
 	        if (currentNetworkInfo.isConnected()) {      
-	        	AdRequest adRequest = new AdRequest.Builder().build();
-	        	adView.loadAd(adRequest);
-	        	
-	        	if (adView.getVisibility() == View.GONE) { 
-	                adView.setVisibility(View.VISIBLE);
-	        	}
+	        	/* AdMob */
+        		adView = (AdView) findViewById(R.id.adView);
+        		AdRequest adRequest = new AdRequest.Builder().build();
+        		adView.loadAd(adRequest);
+            	
+            	if (adView.getVisibility() == AdView.GONE)
+       		     	adView.setVisibility(View.VISIBLE);
 	             
 	        } else {
-	        	if (adView.getVisibility() == View.VISIBLE) {
-	       		   adView.setVisibility(View.GONE);
-	       		
-	        	}
+	        	if (adView != null && adView.getVisibility() == AdView.VISIBLE)
+       		     	adView.setVisibility(View.GONE);	        	
 	       
 	        }
 		}

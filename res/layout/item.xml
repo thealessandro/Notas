@@ -66,11 +66,6 @@
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="normal" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="5px"
-            android:background="#80b49c" />
     </LinearLayout>
 
 </LinearLayout>

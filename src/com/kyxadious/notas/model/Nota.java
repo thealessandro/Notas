@@ -1,6 +1,8 @@
 package com.kyxadious.notas.model;
 
-public class Nota {
+import java.io.Serializable;
+
+public class Nota implements Serializable {
 
 	private int id;
 	private String data;
