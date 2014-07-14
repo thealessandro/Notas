@@ -14,8 +14,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils.TruncateAt;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -32,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
 	private ArrayAdapterNota adapterNota;
 	private AdMobBroadcastReceiver adMobBroadcastReceiver;
 	
+	private static final String ID = "id";
 	private static final String TAG = MainActivity.class.getSimpleName();
 	
 	@Override
@@ -87,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				
-				TextView textViewTexto = (TextView) view.findViewById(R.id.tv_item_texto);
+			    TextView textViewTexto = (TextView) view.findViewById(R.id.tv_item_texto);
 				
 				/* Ellipsize (...) e Single Line*/
 				if (textViewTexto.getEllipsize() == TruncateAt.END) {
@@ -106,13 +110,58 @@ public class MainActivity extends ActionBarActivity {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-				TextView idNota = (TextView) view.findViewById(R.id.tv_item_index);
-				NotaDAO notaDAO = new NotaDAO(getApplicationContext());
-				notaDAO.deletarNota(idNota.getText().toString());
 				
-				/* atualizar o listView quando um item for deletado do banco */
-				adapterNota.remove(adapterNota.getItem(position));
-				adapterNota.notifyDataSetChanged();
+				TextView textViewIndex = (TextView) view.findViewById(R.id.tv_item_index);
+				TextView textViewTexto = (TextView) view.findViewById(R.id.tv_item_texto);
+				
+				final int positionItem = position;
+				final String textoNota = textViewTexto.getText().toString();
+				final String idNota = textViewIndex.getText().toString();
+                final String[] opcoesCustomAlertDialog = { "Editar", "Deletar", "Compartilhar" };
+			    final ArrayAdapter<String> arrayAdapterCustomAlertDialog = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_alert_dialog, R.id.tv_custom_alert_dialog, opcoesCustomAlertDialog);
+				
+                AlertDialog.Builder customBuilder = new AlertDialog.Builder(MainActivity.this);
+				customBuilder.setAdapter(arrayAdapterCustomAlertDialog, new DialogInterface.OnClickListener() {
+					
+					/* Escolher uma opeção do CustomAlertDialog  */
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						String nameItem = arrayAdapterCustomAlertDialog.getItem(which);
+						
+						if (nameItem.equals(opcoesCustomAlertDialog[0])) { // editar
+							Intent intent = new Intent(getApplicationContext(), EditarNotaActivity.class);
+							intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							intent.putExtra(ID, idNota);
+							startActivity(intent);
+							
+						} else if (nameItem.equals(opcoesCustomAlertDialog[1])) { // deletar
+							AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(MainActivity.this);
+				          	deleteBuilder.setMessage("Você tem certeza que quer deletar essa nota?");
+				          	deleteBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									NotaDAO notaDAO = new NotaDAO(getApplicationContext());					
+									notaDAO.deletarNota(idNota);
+									/* atualizar o listView quando um item for deletado do banco */ 
+									adapterNota.remove(adapterNota.getItem(positionItem));
+									adapterNota.notifyDataSetChanged();
+								}
+							});
+				          	deleteBuilder.setNegativeButton("Não", null);
+				          	deleteBuilder.show();
+							
+						} else if (nameItem.equals(opcoesCustomAlertDialog[2])) { // compartilhar
+							Intent share = new Intent(Intent.ACTION_SEND);
+					        share.setType("text/plain");
+					        share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
+					        share.putExtra(Intent.EXTRA_TEXT, textoNota);
+					        startActivity(Intent.createChooser(share, "Compartilhar nota"));
+							
+						}
+					}
+				});
+				customBuilder.show();
 				
 				return true;
 			}

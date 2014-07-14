@@ -35,11 +35,10 @@ import android.os.Build;
 
 public class NovaNotaActivity extends ActionBarActivity {
 
-	
-	private LinearLayout dataHoraLinearLayout;
 	private TextView dataTextView;
 	private TextView horaTextView;
 	private EditText novaNotaEditText;
+	private LinearLayout novaNotaLinearLayout;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +51,11 @@ public class NovaNotaActivity extends ActionBarActivity {
 		actionBar.setHomeButtonEnabled(true);
 		
 		/* LinearLayout data e hora */
-		dataHoraLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_data_hora);
+		novaNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_nova_nota);
 		
 		/* TextView */
-		dataTextView = (TextView) findViewById(R.id.tv_data);
-		horaTextView = (TextView) findViewById(R.id.tv_hora);
+		dataTextView = (TextView) findViewById(R.id.tv_nova_data);
+		horaTextView = (TextView) findViewById(R.id.tv_nova_hora);
 		
 		/* Configurando a hora atual para o horaTextView */
 		Time hojeTime = new Time();
@@ -79,33 +78,30 @@ public class NovaNotaActivity extends ActionBarActivity {
 			}
 		});
 		
-		
-		
-		
 	}
 	
 	public void corNotaRosa(View view) {	
-		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f8e0e8"));
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#f8e0e8"));
 		novaNotaEditText.setBackgroundColor(Color.parseColor("#f8e0e8"));
 	}
 	
 	public void corNotaFlamingo(View view) {
-		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f8e8d0"));
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#f8e8d0"));
 		novaNotaEditText.setBackgroundColor(Color.parseColor("#f8e8d0"));
 	}
 	
 	public void corNotaAmarelo(View view) {
-		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#f7f4b4"));
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#f7f4b4"));
 		novaNotaEditText.setBackgroundColor(Color.parseColor("#f7f4b4"));
 	}
 	
 	public void corNotaVerde(View view) {
-		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#e0f8d8"));
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#e0f8d8"));
 		novaNotaEditText.setBackgroundColor(Color.parseColor("#e0f8d8"));
 	}
 	
 	public void corNotaRoxo(View view) {
-		dataHoraLinearLayout.setBackgroundColor(Color.parseColor("#e8e8f8"));
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#e8e8f8"));
 		novaNotaEditText.setBackgroundColor(Color.parseColor("#e8e8f8"));
 	}
 	
@@ -136,9 +132,8 @@ public class NovaNotaActivity extends ActionBarActivity {
 	
 	/* Botão cancelar nova nota */
 	public void cancelarNota(View view) {
-		
 		AlertDialog.Builder mensagemBuilder = new AlertDialog.Builder(this);
-		mensagemBuilder.setMessage("Você tem certeza que quer cancelar essa nota?");
+		mensagemBuilder.setMessage("Você tem certeza que não quer salvar essa nota?");
 		mensagemBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -153,14 +148,12 @@ public class NovaNotaActivity extends ActionBarActivity {
 		
 		mensagemBuilder.setNegativeButton("Não", null);
 		mensagemBuilder.show();
-		
 	}
 	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.nova_nota, menu);
 		return true;
 	}

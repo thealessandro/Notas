@@ -42,8 +42,8 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.kyxadious.notas.NotaActivity"
-            android:label="@string/title_activity_nota" >
+            android:name="com.kyxadious.notas.EditarNotaActivity"
+            android:label="@string/title_activity_atualizar_nota" >
         </activity>
     </application>
 

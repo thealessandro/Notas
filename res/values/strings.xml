@@ -4,10 +4,13 @@
     <string name="app_name">Notas</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_about">Sobre</string>
+    <string name="action_share">Compartilhar</string>
     <string name="criar_nota">Criar nova nota</string>
     <string name="title_activity_nova_nota">Nova Nota</string>
     <string name="salvar">Salvar</string>
     <string name="cancelar">Cancelar</string>
     <string name="title_activity_nota">Nota</string>
+    <string name="title_activity_atualizar_nota">Editar Nota</string>
 
 </resources>

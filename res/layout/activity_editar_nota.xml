@@ -14,7 +14,7 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/linear_layout_nova_nota"
+            android:id="@+id/linear_layout_editar_nota"
             android:layout_width="fill_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="10dp" >
 
                 <TextView
-                    android:id="@+id/tv_nova_data"
+                    android:id="@+id/tv_editar_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -40,7 +40,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_nova_hora"
+                    android:id="@+id/tv_editar_hora"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -59,7 +59,7 @@
             <!-- EditeText com as anotações -->
 
             <EditText
-                android:id="@+id/ed_nova_nota"
+                android:id="@+id/ed_editar_texto"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#f7f4b4"
@@ -85,7 +85,7 @@
             <!-- Rosa -->
 
             <Button
-                android:id="@+id/bt_nova_rosa"
+                android:id="@+id/bt_editar_rosa"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
@@ -96,7 +96,7 @@
             <!-- Flamingo -->
 
             <Button
-                android:id="@+id/bt_nova_flamingo"
+                android:id="@+id/bt_editar_flamingo"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
@@ -107,7 +107,7 @@
             <!-- Amarelo -->
 
             <Button
-                android:id="@+id/bt_nova_amarelo"
+                android:id="@+id/bt_editar_amarelo"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -117,7 +117,7 @@
             <!-- Verde -->
 
             <Button
-                android:id="@+id/bt_nova_verde"
+                android:id="@+id/bt_editar_verde"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -128,7 +128,7 @@
             <!-- Roxo -->
 
             <Button
-                android:id="@+id/bt_nova_roxo"
+                android:id="@+id/bt_editar_roxo"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -147,7 +147,7 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/bt_nova_salvar_nota"
+                android:id="@+id/bt_editar_salvar_nota"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
@@ -159,7 +159,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/bt_nova_cancelar_nota"
+                android:id="@+id/bt_editar_cancelar_nota"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

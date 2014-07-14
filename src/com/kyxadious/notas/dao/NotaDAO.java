@@ -51,13 +51,13 @@ public class NotaDAO {
 	}
 	
 	/* Retornar uma Nota */
-	public Nota getNota(int id) {
+	public Nota getNota(String id) {
 		openReadableDatabase();
 		
 		Cursor cursor = database.query(NotasSQLiteHelper.TABELA, 
 										NotasSQLiteHelper.COLUNAS, 
 										NotasSQLiteHelper.ID + " = ?", 
-										new String[] { String.valueOf(id) }, 
+										new String[] { id }, 
 										null, 
 										null, 
 										null,
@@ -72,7 +72,7 @@ public class NotaDAO {
 		nota.setData(cursor.getString(1));
 		nota.setHora(cursor.getString(2));
 		nota.setTexto(cursor.getString(3));
-		nota.setCor(cursor.getString(4));
+		
 		
 		cursor.close();
 		closeDatabase();
@@ -88,7 +88,8 @@ public class NotaDAO {
 								  + NotasSQLiteHelper.DATA + ", "
 								  + NotasSQLiteHelper.HORA + ", "
 								  + NotasSQLiteHelper.TEXTO + " FROM "
-								  + NotasSQLiteHelper.TABELA;
+								  + NotasSQLiteHelper.TABELA + " ORDER BY "
+								  + NotasSQLiteHelper.ID + " DESC";
 		
 		openReadableDatabase();
 		Cursor cursor = database.rawQuery(query, null);
