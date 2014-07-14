@@ -1174,14 +1174,15 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_light=0x7f02006e;
         public static final int ic_bacground=0x7f02006f;
         public static final int ic_launcher=0x7f020070;
-        public static final int ic_plus=0x7f020071;
-        public static final int ic_plusone_medium_off_client=0x7f020072;
-        public static final int ic_plusone_small_off_client=0x7f020073;
-        public static final int ic_plusone_standard_off_client=0x7f020074;
-        public static final int ic_plusone_tall_off_client=0x7f020075;
+        public static final int ic_logo=0x7f020071;
+        public static final int ic_plus=0x7f020072;
+        public static final int ic_plusone_medium_off_client=0x7f020073;
+        public static final int ic_plusone_small_off_client=0x7f020074;
+        public static final int ic_plusone_standard_off_client=0x7f020075;
+        public static final int ic_plusone_tall_off_client=0x7f020076;
     }
     public static final class id {
-        public static final int action_about=0x7f060061;
+        public static final int action_about=0x7f060063;
         public static final int action_bar=0x7f06001f;
         public static final int action_bar_activity_content=0x7f060018;
         public static final int action_bar_container=0x7f06001e;
@@ -1193,10 +1194,10 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060019;
         public static final int action_menu_presenter=0x7f06001a;
         public static final int action_mode_close_button=0x7f060027;
-        public static final int action_settings=0x7f06005f;
-        public static final int action_share=0x7f060060;
+        public static final int action_settings=0x7f060061;
+        public static final int action_share=0x7f060062;
         public static final int activity_chooser_view_content=0x7f060028;
-        public static final int adView=0x7f06004d;
+        public static final int adView=0x7f06004e;
         public static final int always=0x7f06000f;
         public static final int beginning=0x7f060014;
         public static final int bt_editar_amarelo=0x7f060045;
@@ -1206,13 +1207,13 @@ containing a value of this type.
         public static final int bt_editar_roxo=0x7f060047;
         public static final int bt_editar_salvar_nota=0x7f060048;
         public static final int bt_editar_verde=0x7f060046;
-        public static final int bt_nova_amarelo=0x7f060054;
-        public static final int bt_nova_cancelar_nota=0x7f060058;
-        public static final int bt_nova_flamingo=0x7f060053;
-        public static final int bt_nova_rosa=0x7f060052;
-        public static final int bt_nova_roxo=0x7f060056;
-        public static final int bt_nova_salvar_nota=0x7f060057;
-        public static final int bt_nova_verde=0x7f060055;
+        public static final int bt_nova_amarelo=0x7f060055;
+        public static final int bt_nova_cancelar_nota=0x7f060059;
+        public static final int bt_nova_flamingo=0x7f060054;
+        public static final int bt_nova_rosa=0x7f060053;
+        public static final int bt_nova_roxo=0x7f060057;
+        public static final int bt_nova_salvar_nota=0x7f060058;
+        public static final int bt_nova_verde=0x7f060056;
         public static final int checkbox=0x7f060030;
         public static final int collapseActionView=0x7f060011;
         public static final int default_activity_button=0x7f06002b;
@@ -1220,7 +1221,7 @@ containing a value of this type.
         public static final int disableHome=0x7f06000c;
         public static final int dropdown=0x7f060013;
         public static final int ed_editar_texto=0x7f060042;
-        public static final int ed_nova_nota=0x7f060051;
+        public static final int ed_nova_nota=0x7f060052;
         public static final int edit_query=0x7f060033;
         public static final int end=0x7f060016;
         public static final int expand_activities_button=0x7f060029;
@@ -1232,12 +1233,13 @@ containing a value of this type.
         public static final int ifRoom=0x7f06000e;
         public static final int image=0x7f06002a;
         public static final int iv_plus_note=0x7f06004a;
+        public static final int iv_sobre_logo=0x7f06005a;
         public static final int linear_layout_editar_nota=0x7f06003f;
-        public static final int linear_layout_item=0x7f06005a;
-        public static final int linear_layout_nova_nota=0x7f06004e;
+        public static final int linear_layout_item=0x7f06005c;
+        public static final int linear_layout_nova_nota=0x7f06004f;
         public static final int listMode=0x7f060005;
         public static final int list_item=0x7f06002c;
-        public static final int list_view_notas=0x7f06004c;
+        public static final int list_view_notas=0x7f06004d;
         public static final int middle=0x7f060015;
         public static final int never=0x7f06000d;
         public static final int none=0x7f060000;
@@ -1267,15 +1269,16 @@ containing a value of this type.
         public static final int title=0x7f06002e;
         public static final int top_action_bar=0x7f060023;
         public static final int tv_criar_nota=0x7f06004b;
-        public static final int tv_custom_alert_dialog=0x7f060059;
+        public static final int tv_custom_alert_dialog=0x7f06005b;
         public static final int tv_editar_data=0x7f060040;
         public static final int tv_editar_hora=0x7f060041;
-        public static final int tv_item_data=0x7f06005c;
-        public static final int tv_item_hora=0x7f06005d;
-        public static final int tv_item_index=0x7f06005b;
-        public static final int tv_item_texto=0x7f06005e;
-        public static final int tv_nova_data=0x7f06004f;
-        public static final int tv_nova_hora=0x7f060050;
+        public static final int tv_item_data=0x7f06005e;
+        public static final int tv_item_hora=0x7f06005f;
+        public static final int tv_item_index=0x7f06005d;
+        public static final int tv_item_texto=0x7f060060;
+        public static final int tv_nova_data=0x7f060050;
+        public static final int tv_nova_hora=0x7f060051;
+        public static final int tv_numero_notas=0x7f06004c;
         public static final int up=0x7f060024;
         public static final int useLogo=0x7f060007;
         public static final int withText=0x7f060010;
@@ -1333,14 +1336,16 @@ containing a value of this type.
         public static final int activity_editar_nota=0x7f030017;
         public static final int activity_main=0x7f030018;
         public static final int activity_nova_nota=0x7f030019;
-        public static final int custom_alert_dialog=0x7f03001a;
-        public static final int item=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int activity_sobre=0x7f03001a;
+        public static final int custom_alert_dialog=0x7f03001b;
+        public static final int item=0x7f03001c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
     }
     public static final class menu {
         public static final int editar_nota=0x7f0c0000;
         public static final int main=0x7f0c0001;
         public static final int nova_nota=0x7f0c0002;
+        public static final int sobre=0x7f0c0003;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1483,14 +1488,18 @@ containing a value of this type.
          */
         public static final int common_signin_button_text_long=0x7f070013;
         public static final int criar_nota=0x7f07002d;
+        public static final int desenvolvido=0x7f070032;
+        public static final int email=0x7f070033;
         public static final int hello_world=0x7f070029;
         /**  Location client code resources (prefix with location_client) 
          */
         public static final int location_client_powered_by_google=0x7f07001a;
         public static final int salvar=0x7f07002f;
-        public static final int title_activity_atualizar_nota=0x7f070032;
-        public static final int title_activity_nota=0x7f070031;
+        public static final int title_activity_atualizar_nota=0x7f070035;
+        public static final int title_activity_nota=0x7f070034;
         public static final int title_activity_nova_nota=0x7f07002e;
+        public static final int title_activity_sobre=0x7f070036;
+        public static final int versão_codigo=0x7f070031;
     }
     public static final class style {
         /** 

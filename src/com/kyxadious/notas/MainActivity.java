@@ -44,10 +44,12 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
+	
 	private AdView adView;
-	private ImageView imageViewIconeCriarNota;
 	private ListView listViewNotas;
+	private TextView textViewNumeroNotas;
 	private ArrayAdapterNota adapterNota;
+	private ImageView imageViewIconeCriarNota;
 	private AdMobBroadcastReceiver adMobBroadcastReceiver;
 	
 	private static final String ID = "id";
@@ -63,8 +65,7 @@ public class MainActivity extends ActionBarActivity {
 		adMobBroadcastReceiver = new AdMobBroadcastReceiver();
 		this.registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 		
-		
-		// Botão para criar nova nota 
+		/* Botão para criar nova nota */ 
 		imageViewIconeCriarNota = (ImageView) findViewById(R.id.iv_plus_note);
 		imageViewIconeCriarNota.setOnClickListener(new OnClickListener() {
 			
@@ -87,6 +88,10 @@ public class MainActivity extends ActionBarActivity {
 		ArrayList<Nota> notas = notaDAO.getTodasNotas(); 
 	    adapterNota = new ArrayAdapterNota(getApplicationContext(), R.layout.item, notas);
 		listViewNotas.setAdapter(adapterNota);
+		
+		/* Número total de notas */
+		textViewNumeroNotas = (TextView) findViewById(R.id.tv_numero_notas);
+		textViewNumeroNotas.setText("( " + notas.size() + " )");
 		
 		/* Click: visualizando uma nota */
 		listViewNotas.setOnItemClickListener(new OnItemClickListener() {
@@ -146,9 +151,13 @@ public class MainActivity extends ActionBarActivity {
 								public void onClick(DialogInterface dialog, int which) {
 									NotaDAO notaDAO = new NotaDAO(getApplicationContext());					
 									notaDAO.deletarNota(idNota);
+																
 									/* atualizar o listView quando um item for deletado do banco */ 
 									adapterNota.remove(adapterNota.getItem(positionItem));
 									adapterNota.notifyDataSetChanged();
+									
+									/* Atualizar o número total de notas */
+									textViewNumeroNotas.setText("( " + notaDAO.getTotalNotas() + " )");
 								}
 							});
 				          	deleteBuilder.setNegativeButton("Não", null);
@@ -159,7 +168,7 @@ public class MainActivity extends ActionBarActivity {
 					        share.setType("text/plain");
 					        share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
 					        share.putExtra(Intent.EXTRA_TEXT, textoNota);
-					        startActivity(Intent.createChooser(share, "Compartilhar nota"));
+					        startActivity(Intent.createChooser(share, "Compartilhar sua nota via"));
 							
 						}
 					}
@@ -183,9 +192,26 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings) {
 			return true;
+			
+		} else if (id == R.id.action_about) {
+			Intent intent = new Intent(getApplicationContext(), SobreActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+			
+		} else if (id == R.id.action_share) {
+			String appNotas = "Confira \"Notas\" - https://play.google.com/store/apps/details?id=com.kyxadious.notas";
+			Intent share = new Intent(Intent.ACTION_SEND);
+	        share.setType("text/plain");
+	        share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
+	        share.putExtra(Intent.EXTRA_TEXT, appNotas);
+	        startActivity(Intent.createChooser(share, "Compartilhar \"Notas\" via"));
+			return true;
 		}
+		 
 		return super.onOptionsItemSelected(item);
 	}	
 	

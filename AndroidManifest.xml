@@ -38,12 +38,16 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity
             android:name="com.kyxadious.notas.NovaNotaActivity"
-            android:label="@string/title_activity_nova_nota"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_nova_nota" >
         </activity>
         <activity
             android:name="com.kyxadious.notas.EditarNotaActivity"
             android:label="@string/title_activity_atualizar_nota" >
+        </activity>
+        <activity
+            android:name="com.kyxadious.notas.SobreActivity"
+            android:label="@string/title_activity_sobre"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

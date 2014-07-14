@@ -144,6 +144,13 @@ public class NotaDAO {
 		closeDatabase();
 	}
 	
+	public int getTotalNotas() {
+		int n = 0;
+		ArrayList<Nota> notas = getTodasNotas();
+		n = notas.size();
+		
+		return n;
+	}
 
 }
 
