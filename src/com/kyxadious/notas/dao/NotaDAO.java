@@ -42,10 +42,9 @@ public class NotaDAO {
 		values.put(NotasSQLiteHelper.DATA, nota.getData());
 		values.put(NotasSQLiteHelper.HORA, nota.getHora());
 		values.put(NotasSQLiteHelper.TEXTO, nota.getTexto());
+		values.put(NotasSQLiteHelper.COR, nota.getCor());
 		
-		long ok = database.insert(NotasSQLiteHelper.TABELA, null, values);
-		
-		Log.d(TAG, "Add nova nota: "+ ok);
+		database.insert(NotasSQLiteHelper.TABELA, null, values);
 		
 		closeDatabase();
 	}
@@ -72,7 +71,7 @@ public class NotaDAO {
 		nota.setData(cursor.getString(1));
 		nota.setHora(cursor.getString(2));
 		nota.setTexto(cursor.getString(3));
-		
+		nota.setCor(cursor.getString(4));
 		
 		cursor.close();
 		closeDatabase();
@@ -87,7 +86,8 @@ public class NotaDAO {
 		String query = "SELECT " + NotasSQLiteHelper.ID + ", "
 								  + NotasSQLiteHelper.DATA + ", "
 								  + NotasSQLiteHelper.HORA + ", "
-								  + NotasSQLiteHelper.TEXTO + " FROM "
+								  + NotasSQLiteHelper.TEXTO + ", "
+								  + NotasSQLiteHelper.COR + " FROM "
 								  + NotasSQLiteHelper.TABELA + " ORDER BY "
 								  + NotasSQLiteHelper.ID + " DESC";
 		
@@ -102,11 +102,11 @@ public class NotaDAO {
 				nota.setData(cursor.getString(1));
 				nota.setHora(cursor.getString(2));
 				nota.setTexto(cursor.getString(3));
+				nota.setCor(cursor.getString(4));
 						
 				notas.add(nota);
 			} while (cursor.moveToNext());
 		}
-		
 		
 		cursor.close();
 		closeDatabase();
@@ -123,6 +123,7 @@ public class NotaDAO {
 		values.put(NotasSQLiteHelper.DATA, nota.getData());
 		values.put(NotasSQLiteHelper.HORA, nota.getHora());
 		values.put(NotasSQLiteHelper.TEXTO, nota.getTexto());
+		values.put(NotasSQLiteHelper.COR, nota.getCor());
 		
 		database.update(NotasSQLiteHelper.TABELA, 
 						values, 

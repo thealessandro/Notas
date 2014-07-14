@@ -6,10 +6,12 @@ import com.kyxadious.notas.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ArrayAdapterNota extends ArrayAdapter<Nota>{
@@ -38,6 +40,7 @@ public class ArrayAdapterNota extends ArrayAdapter<Nota>{
 			itemNota.data = (TextView) view.findViewById(R.id.tv_item_data);
 			itemNota.hora = (TextView) view.findViewById(R.id.tv_item_hora);
 			itemNota.texto = (TextView) view.findViewById(R.id.tv_item_texto);
+			itemNota.cor = (LinearLayout) view.findViewById(R.id.linear_layout_item);
 			view.setTag(itemNota);
 		} else {
 			itemNota = (ItemNota) view.getTag();
@@ -48,6 +51,7 @@ public class ArrayAdapterNota extends ArrayAdapter<Nota>{
 		itemNota.data.setText(nota.getData());
 		itemNota.hora.setText(nota.getHora());
 		itemNota.texto.setText(nota.getTexto());
+		itemNota.cor.setBackgroundColor(Color.parseColor(nota.getCor()));
 		
 		return view;
 	}
@@ -57,6 +61,7 @@ public class ArrayAdapterNota extends ArrayAdapter<Nota>{
 		public TextView data;
 		public TextView hora;
 		public TextView texto;
+		public LinearLayout cor;
 	}
 
 }

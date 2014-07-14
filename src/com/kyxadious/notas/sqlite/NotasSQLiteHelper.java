@@ -13,7 +13,8 @@ public class NotasSQLiteHelper extends SQLiteOpenHelper{
 	public static final String DATA = "data";
 	public static final String HORA = "hora";
 	public static final String TEXTO = "texto";
-	public static final String[] COLUNAS = { ID, DATA, HORA, TEXTO };
+	public static final String COR = "cor";
+	public static final String[] COLUNAS = { ID, DATA, HORA, TEXTO, COR };
 	
 	
 	private static final String DATABASE_NAME = "notas.db";
@@ -26,7 +27,8 @@ public class NotasSQLiteHelper extends SQLiteOpenHelper{
 													+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 													+ DATA + " TEXT, "
 													+ HORA + " TEXT, " 
-													+ TEXTO + " TEXT "
+													+ TEXTO + " TEXT, "
+													+ COR + " TEXT "
 													+ ")";
 	
 

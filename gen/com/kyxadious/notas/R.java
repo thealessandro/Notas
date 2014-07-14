@@ -1181,7 +1181,7 @@ containing a value of this type.
         public static final int ic_plusone_tall_off_client=0x7f020075;
     }
     public static final class id {
-        public static final int action_about=0x7f060060;
+        public static final int action_about=0x7f060061;
         public static final int action_bar=0x7f06001f;
         public static final int action_bar_activity_content=0x7f060018;
         public static final int action_bar_container=0x7f06001e;
@@ -1193,8 +1193,8 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060019;
         public static final int action_menu_presenter=0x7f06001a;
         public static final int action_mode_close_button=0x7f060027;
-        public static final int action_settings=0x7f06005e;
-        public static final int action_share=0x7f06005f;
+        public static final int action_settings=0x7f06005f;
+        public static final int action_share=0x7f060060;
         public static final int activity_chooser_view_content=0x7f060028;
         public static final int adView=0x7f06004d;
         public static final int always=0x7f06000f;
@@ -1233,6 +1233,7 @@ containing a value of this type.
         public static final int image=0x7f06002a;
         public static final int iv_plus_note=0x7f06004a;
         public static final int linear_layout_editar_nota=0x7f06003f;
+        public static final int linear_layout_item=0x7f06005a;
         public static final int linear_layout_nova_nota=0x7f06004e;
         public static final int listMode=0x7f060005;
         public static final int list_item=0x7f06002c;
@@ -1269,10 +1270,10 @@ containing a value of this type.
         public static final int tv_custom_alert_dialog=0x7f060059;
         public static final int tv_editar_data=0x7f060040;
         public static final int tv_editar_hora=0x7f060041;
-        public static final int tv_item_data=0x7f06005b;
-        public static final int tv_item_hora=0x7f06005c;
-        public static final int tv_item_index=0x7f06005a;
-        public static final int tv_item_texto=0x7f06005d;
+        public static final int tv_item_data=0x7f06005c;
+        public static final int tv_item_hora=0x7f06005d;
+        public static final int tv_item_index=0x7f06005b;
+        public static final int tv_item_texto=0x7f06005e;
         public static final int tv_nova_data=0x7f06004f;
         public static final int tv_nova_hora=0x7f060050;
         public static final int up=0x7f060024;

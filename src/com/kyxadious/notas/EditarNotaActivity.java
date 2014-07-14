@@ -27,6 +27,7 @@ import android.os.Build;
 public class EditarNotaActivity extends ActionBarActivity {
 
 	private Nota nota;
+	private String corNota;
 	private TextView textViewData; 
 	private TextView textViewHora; 
 	private EditText editTextTexto;
@@ -48,6 +49,7 @@ public class EditarNotaActivity extends ActionBarActivity {
 		String idNota = intent.getStringExtra(ID);
 		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		nota = notaDAO.getNota(idNota);
+		corNota = nota.getCor();
 		
 		textViewData = (TextView) findViewById(R.id.tv_editar_data);
 		textViewHora = (TextView) findViewById(R.id.tv_editar_hora);
@@ -57,10 +59,15 @@ public class EditarNotaActivity extends ActionBarActivity {
 		textViewData.setText(nota.getData());
 		textViewHora.setText(nota.getHora());
 		editTextTexto.setText(nota.getTexto());
+		editTextTexto.setBackgroundColor(Color.parseColor(nota.getCor()));
+		editarNotaLinearLayout.setBackgroundColor(Color.parseColor(nota.getCor()));
+		
+		/* Pode exibir o teclado para digitar */
 		editTextTexto.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				/* Ativando o foco do EditText */
 				editTextTexto.setFocusable(true);
 				editTextTexto.setFocusableInTouchMode(true);
 			}
@@ -70,28 +77,38 @@ public class EditarNotaActivity extends ActionBarActivity {
 	}
 	
 	public void corNotaRosa(View view) {
-		editarNotaLinearLayout.setBackgroundColor(Color.parseColor("#f8e0e8"));
-		editTextTexto.setBackgroundColor(Color.parseColor("#f8e0e8"));
+		String corRosa = "#f8e0e8";
+		corNota = corRosa;
+		editarNotaLinearLayout.setBackgroundColor(Color.parseColor(corRosa));
+		editTextTexto.setBackgroundColor(Color.parseColor(corRosa));
 	}
 	
     public void corNotaFlamingo(View view) {
-    	editarNotaLinearLayout.setBackgroundColor(Color.parseColor("#f8e8d0"));
-		editTextTexto.setBackgroundColor(Color.parseColor("#f8e8d0"));
+    	String corFlamingo = "#f8e8d0";
+    	corNota = corFlamingo; 
+    	editarNotaLinearLayout.setBackgroundColor(Color.parseColor(corFlamingo));
+		editTextTexto.setBackgroundColor(Color.parseColor(corFlamingo));
     }
 
     public void corNotaAmarelo(View view) {
-    	editarNotaLinearLayout.setBackgroundColor(Color.parseColor("#f7f4b4"));
-		editTextTexto.setBackgroundColor(Color.parseColor("#f7f4b4"));
+    	String corAmarelo = "#f7f4b4";
+    	corNota = corAmarelo;
+    	editarNotaLinearLayout.setBackgroundColor(Color.parseColor(corAmarelo));
+		editTextTexto.setBackgroundColor(Color.parseColor(corAmarelo));
     }
 	
     public void corNotaVerde(View view) {
-    	editarNotaLinearLayout.setBackgroundColor(Color.parseColor("#e0f8d8"));
-		editTextTexto.setBackgroundColor(Color.parseColor("#e0f8d8"));
+    	String corVerde = "#e0f8d8";
+    	corNota = corVerde;
+    	editarNotaLinearLayout.setBackgroundColor(Color.parseColor(corVerde));
+		editTextTexto.setBackgroundColor(Color.parseColor(corVerde));
     }
 	
 	public void corNotaRoxo(View view) {
-		editarNotaLinearLayout.setBackgroundColor(Color.parseColor("#e8e8f8"));
-		editTextTexto.setBackgroundColor(Color.parseColor("#e8e8f8"));
+		String corRoxo = "#e8e8f8";
+		corNota = corRoxo;
+		editarNotaLinearLayout.setBackgroundColor(Color.parseColor(corRoxo));
+		editTextTexto.setBackgroundColor(Color.parseColor(corRoxo));
 	}
 	
 	public void salvarNota(View view) {
@@ -100,6 +117,7 @@ public class EditarNotaActivity extends ActionBarActivity {
         atualizarNota.setData(nota.getData());
         atualizarNota.setHora(nota.getHora());
 		atualizarNota.setTexto(editTextTexto.getText().toString());
+		atualizarNota.setCor(corNota);
 		
 		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		notaDAO.atualizarNota(atualizarNota);

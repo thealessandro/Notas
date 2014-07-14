@@ -35,6 +35,7 @@ import android.os.Build;
 
 public class NovaNotaActivity extends ActionBarActivity {
 
+	private String corNota;
 	private TextView dataTextView;
 	private TextView horaTextView;
 	private EditText novaNotaEditText;
@@ -49,6 +50,9 @@ public class NovaNotaActivity extends ActionBarActivity {
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
+		
+		/* Cor amarela padrão da nota */
+		corNota = "#f7f4b4";
 		
 		/* LinearLayout data e hora */
 		novaNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_nova_nota);
@@ -81,28 +85,38 @@ public class NovaNotaActivity extends ActionBarActivity {
 	}
 	
 	public void corNotaRosa(View view) {	
-		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#f8e0e8"));
-		novaNotaEditText.setBackgroundColor(Color.parseColor("#f8e0e8"));
+		String corRosa = "#f8e0e8";
+		corNota = corRosa;
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor(corRosa));
+		novaNotaEditText.setBackgroundColor(Color.parseColor(corRosa));
 	}
 	
 	public void corNotaFlamingo(View view) {
-		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#f8e8d0"));
-		novaNotaEditText.setBackgroundColor(Color.parseColor("#f8e8d0"));
+		String corFlamingo = "#f8e8d0";
+		corNota = corFlamingo;
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor(corFlamingo));
+		novaNotaEditText.setBackgroundColor(Color.parseColor(corFlamingo));
 	}
 	
 	public void corNotaAmarelo(View view) {
-		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#f7f4b4"));
-		novaNotaEditText.setBackgroundColor(Color.parseColor("#f7f4b4"));
+		String corAmarelo = "#f7f4b4";
+		corNota = corAmarelo;
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor(corAmarelo));
+		novaNotaEditText.setBackgroundColor(Color.parseColor(corAmarelo));
 	}
 	
 	public void corNotaVerde(View view) {
-		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#e0f8d8"));
-		novaNotaEditText.setBackgroundColor(Color.parseColor("#e0f8d8"));
+		String corVerde = "#e0f8d8";
+		corNota = corVerde;
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor(corVerde));
+		novaNotaEditText.setBackgroundColor(Color.parseColor(corVerde));
 	}
 	
 	public void corNotaRoxo(View view) {
-		novaNotaLinearLayout.setBackgroundColor(Color.parseColor("#e8e8f8"));
-		novaNotaEditText.setBackgroundColor(Color.parseColor("#e8e8f8"));
+		String corRoxo = "#e8e8f8";
+		corNota = corRoxo;
+		novaNotaLinearLayout.setBackgroundColor(Color.parseColor(corRoxo));
+		novaNotaEditText.setBackgroundColor(Color.parseColor(corRoxo));
 	}
 	
 	/* Botão salvar nova nota */
@@ -115,6 +129,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 		    nota.setData(dataTextView.getText().toString());
 		    nota.setHora(horaTextView.getText().toString());
 		    nota.setTexto(texto);
+		    nota.setCor(corNota);
 		
 		    NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		    notaDAO.addNota(nota);

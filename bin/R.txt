@@ -286,7 +286,7 @@ int drawable ic_plusone_medium_off_client 0x7f020072
 int drawable ic_plusone_small_off_client 0x7f020073
 int drawable ic_plusone_standard_off_client 0x7f020074
 int drawable ic_plusone_tall_off_client 0x7f020075
-int id action_about 0x7f060060
+int id action_about 0x7f060061
 int id action_bar 0x7f06001f
 int id action_bar_activity_content 0x7f060018
 int id action_bar_container 0x7f06001e
@@ -298,8 +298,8 @@ int id action_context_bar 0x7f060020
 int id action_menu_divider 0x7f060019
 int id action_menu_presenter 0x7f06001a
 int id action_mode_close_button 0x7f060027
-int id action_settings 0x7f06005e
-int id action_share 0x7f06005f
+int id action_settings 0x7f06005f
+int id action_share 0x7f060060
 int id activity_chooser_view_content 0x7f060028
 int id adView 0x7f06004d
 int id always 0x7f06000f
@@ -338,6 +338,7 @@ int id ifRoom 0x7f06000e
 int id image 0x7f06002a
 int id iv_plus_note 0x7f06004a
 int id linear_layout_editar_nota 0x7f06003f
+int id linear_layout_item 0x7f06005a
 int id linear_layout_nova_nota 0x7f06004e
 int id listMode 0x7f060005
 int id list_item 0x7f06002c
@@ -374,10 +375,10 @@ int id tv_criar_nota 0x7f06004b
 int id tv_custom_alert_dialog 0x7f060059
 int id tv_editar_data 0x7f060040
 int id tv_editar_hora 0x7f060041
-int id tv_item_data 0x7f06005b
-int id tv_item_hora 0x7f06005c
-int id tv_item_index 0x7f06005a
-int id tv_item_texto 0x7f06005d
+int id tv_item_data 0x7f06005c
+int id tv_item_hora 0x7f06005d
+int id tv_item_index 0x7f06005b
+int id tv_item_texto 0x7f06005e
 int id tv_nova_data 0x7f06004f
 int id tv_nova_hora 0x7f060050
 int id up 0x7f060024
