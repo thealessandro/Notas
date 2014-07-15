@@ -35,7 +35,7 @@ public class SobreActivity extends ActionBarActivity {
         Bitmap bitmap;
         BitmapFactory.Options options = new BitmapFactory.Options();
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_logo, options);
-        bitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, false);
+        bitmap = Bitmap.createScaledBitmap(bitmap, 170, 170, false);
         imageViewLogo.setImageBitmap(bitmap);
 		
 	}

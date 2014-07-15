@@ -166,7 +166,7 @@ public class MainActivity extends ActionBarActivity {
 						} else if (nameItem.equals(opcoesCustomAlertDialog[2])) { // compartilhar
 							Intent share = new Intent(Intent.ACTION_SEND);
 					        share.setType("text/plain");
-					        share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
+					        //share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
 					        share.putExtra(Intent.EXTRA_TEXT, textoNota);
 					        startActivity(Intent.createChooser(share, "Compartilhar sua nota via"));
 							
@@ -206,7 +206,7 @@ public class MainActivity extends ActionBarActivity {
 			String appNotas = "Confira \"Notas\" - https://play.google.com/store/apps/details?id=com.kyxadious.notas";
 			Intent share = new Intent(Intent.ACTION_SEND);
 	        share.setType("text/plain");
-	        share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
+	        //share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 
 	        share.putExtra(Intent.EXTRA_TEXT, appNotas);
 	        startActivity(Intent.createChooser(share, "Compartilhar \"Notas\" via"));
 			return true;

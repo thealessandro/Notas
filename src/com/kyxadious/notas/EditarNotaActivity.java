@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -56,22 +57,16 @@ public class EditarNotaActivity extends ActionBarActivity {
 		editTextTexto = (EditText) findViewById(R.id.ed_editar_texto);
 		editarNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_editar_nota);
 		
+		/* Ativando o foco do EditText */
+		editTextTexto.setFocusable(true);
+		editTextTexto.setFocusableInTouchMode(true);
+		
+		/* Alimentando os campos */
 		textViewData.setText(nota.getData());
 		textViewHora.setText(nota.getHora());
 		editTextTexto.setText(nota.getTexto());
 		editTextTexto.setBackgroundColor(Color.parseColor(nota.getCor()));
 		editarNotaLinearLayout.setBackgroundColor(Color.parseColor(nota.getCor()));
-		
-		/* Pode exibir o teclado para digitar */
-		editTextTexto.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				/* Ativando o foco do EditText */
-				editTextTexto.setFocusable(true);
-				editTextTexto.setFocusableInTouchMode(true);
-			}
-		});
 		
 		
 	}
@@ -112,6 +107,11 @@ public class EditarNotaActivity extends ActionBarActivity {
 	}
 	
 	public void salvarNota(View view) {
+		
+		/* Mudar a cor do butão quando clicado */
+		Button button = (Button) findViewById(R.id.bt_editar_salvar_nota);
+		button.setBackgroundColor(Color.parseColor("#a98375"));
+		
         Nota atualizarNota = new Nota();
         atualizarNota.setId(nota.getId());
         atualizarNota.setData(nota.getData());
@@ -122,10 +122,13 @@ public class EditarNotaActivity extends ActionBarActivity {
 		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		notaDAO.atualizarNota(atualizarNota);
 		
+		Toast.makeText(getApplicationContext(), "Nota salva", Toast.LENGTH_SHORT).show();
+		
 		//Voltar para tela principal para listar todas as notas 
 		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent); 
+		
 	}
 	
 	public void cancelarNota(View view) {

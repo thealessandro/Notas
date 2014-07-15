@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,16 +51,15 @@ public class NovaNotaActivity extends ActionBarActivity {
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
-		
-		/* Cor amarela padrão da nota */
-		corNota = "#f7f4b4";
-		
-		/* LinearLayout data e hora */
-		novaNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_nova_nota);
-		
+				
 		/* TextView */
 		dataTextView = (TextView) findViewById(R.id.tv_nova_data);
 		horaTextView = (TextView) findViewById(R.id.tv_nova_hora);
+		novaNotaEditText = (EditText) findViewById(R.id.ed_nova_nota);
+		novaNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_nova_nota);
+		
+		/* Cor amarela padrão da nota */
+		corNota = "#f7f4b4";
 		
 		/* Configurando a hora atual para o horaTextView */
 		Time hojeTime = new Time();
@@ -71,16 +71,9 @@ public class NovaNotaActivity extends ActionBarActivity {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		dataTextView.setText(dateFormat.format(hojeDate).toString());
 		
-		/* EditeText nova nota */
-		novaNotaEditText = (EditText) findViewById(R.id.ed_nova_nota);		
-		novaNotaEditText.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				novaNotaEditText.setFocusable(true);
-				novaNotaEditText.setFocusableInTouchMode(true);
-			}
-		});
+		/* Ativando o foco do EditText */
+		novaNotaEditText.setFocusable(true);
+		novaNotaEditText.setFocusableInTouchMode(true);
 		
 	}
 	
@@ -121,10 +114,11 @@ public class NovaNotaActivity extends ActionBarActivity {
 	
 	/* Botão salvar nova nota */
 	public void salvarNota(View view) {
-		
+			
 		String texto = novaNotaEditText.getText().toString();
 		
 		if (texto.length() != 0) {
+			
 		    Nota nota = new Nota();
 		    nota.setData(dataTextView.getText().toString());
 		    nota.setHora(horaTextView.getText().toString());
@@ -134,6 +128,8 @@ public class NovaNotaActivity extends ActionBarActivity {
 		    NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		    notaDAO.addNota(nota);
 		
+		    Toast.makeText(getApplicationContext(), "Nota salva", Toast.LENGTH_SHORT).show();
+		    
 		    /* Voltar para tela principal para listar todas as notas */
 		    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

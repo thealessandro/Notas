@@ -27,7 +27,8 @@
     <ImageView
         android:id="@+id/iv_sobre_logo"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:gravity="center" />
