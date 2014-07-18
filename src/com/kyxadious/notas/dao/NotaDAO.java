@@ -79,6 +79,25 @@ public class NotaDAO {
 		return nota;
 	}
 	
+	/* Número de notas cadastradas */
+	public String getNumeroTotalNotas() {
+		
+		String num = "0";
+		String query = "SELECT COUNT(" + NotasSQLiteHelper.ID + ") FROM " 
+		                                + NotasSQLiteHelper.TABELA;
+		
+		openReadableDatabase();
+		Cursor cursor = database.rawQuery(query, null);
+		if (cursor.moveToFirst()) {
+		    num = cursor.getString(0);
+		}
+		cursor.close();
+		closeDatabase();
+		
+		return num;
+	}
+	
+	
 	/* Todas as Notas */
 	public ArrayList<Nota> getTodasNotas() {
 		
@@ -142,14 +161,6 @@ public class NotaDAO {
 						new String[] { id } );
 		
 		closeDatabase();
-	}
-	
-	public int getTotalNotas() {
-		int n = 0;
-		ArrayList<Nota> notas = getTodasNotas();
-		n = notas.size();
-		
-		return n;
 	}
 
 }

@@ -6,11 +6,13 @@ import com.kyxadious.notas.model.Nota;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.app.AlertDialog;
 import android.app.ApplicationErrorReport.AnrInfo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,6 +31,8 @@ public class EditarNotaActivity extends ActionBarActivity {
 
 	private Nota nota;
 	private String corNota;
+	private NotaDAO notaDAO;
+	private ActionBar actionBar;
 	private TextView textViewData; 
 	private TextView textViewHora; 
 	private EditText editTextTexto;
@@ -41,14 +45,11 @@ public class EditarNotaActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editar_nota);
 
-		/* ActionBar */
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
+		/* Configuração do ambiente do app */
+		configuracaoDoAmbiente();
 		
 		Intent intent = getIntent();
 		String idNota = intent.getStringExtra(ID);
-		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		nota = notaDAO.getNota(idNota);
 		corNota = nota.getCor();
 		
@@ -122,7 +123,7 @@ public class EditarNotaActivity extends ActionBarActivity {
 		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		notaDAO.atualizarNota(atualizarNota);
 		
-		Toast.makeText(getApplicationContext(), "Nota salva", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Nota editada", Toast.LENGTH_SHORT).show();
 		
 		//Voltar para tela principal para listar todas as notas 
 		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -133,7 +134,7 @@ public class EditarNotaActivity extends ActionBarActivity {
 	
 	public void cancelarNota(View view) {
 		AlertDialog.Builder mensagemBuilder = new AlertDialog.Builder(this);
-		mensagemBuilder.setMessage("Você tem certeza que não quer editar essa nota?");
+		mensagemBuilder.setMessage("Você tem certeza que quer cancelar esta nota?");
 		mensagemBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -146,7 +147,7 @@ public class EditarNotaActivity extends ActionBarActivity {
 			}
 		});
 		
-		mensagemBuilder.setNegativeButton("Não", null);
+		mensagemBuilder.setNegativeButton("Cancelar", null);
 		mensagemBuilder.show();
 	}
 
@@ -170,4 +171,19 @@ public class EditarNotaActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
+	private void configuracaoDoAmbiente() {
+		/* ActionBar */
+		actionBar = getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
+		//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
+		//String title = getResources().getString(R.string.title_activity_atualizar_nota);
+		//actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));
+		
+		notaDAO = new NotaDAO(getApplicationContext());
+		
+	}
+	
+		
 }

@@ -10,9 +10,11 @@ import com.kyxadious.notas.model.ArrayAdapterNota;
 import com.kyxadious.notas.model.Nota;
 import com.kyxadious.notas.sqlite.NotasSQLiteHelper;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.Html;
 import android.text.TextUtils.TruncateAt;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -21,6 +23,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -46,10 +49,11 @@ public class MainActivity extends ActionBarActivity {
 
 	
 	private AdView adView;
+	private NotaDAO notaDAO;
+	private ActionBar actionBar;
+	private ArrayList<Nota> notas;
 	private ListView listViewNotas;
-	private TextView textViewNumeroNotas;
 	private ArrayAdapterNota adapterNota;
-	private ImageView imageViewIconeCriarNota;
 	private AdMobBroadcastReceiver adMobBroadcastReceiver;
 	
 	private static final String ID = "id";
@@ -60,39 +64,16 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);		
 		
-			
+		/* Configuração do ambiente do app */
+		configuracaoDoAmbiente();
+		
 		/* AdMob */
-		adMobBroadcastReceiver = new AdMobBroadcastReceiver();
 		this.registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-		
-		/* Botão para criar nova nota */ 
-		imageViewIconeCriarNota = (ImageView) findViewById(R.id.iv_plus_note);
-		imageViewIconeCriarNota.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				/* tirar o registro o BroadcastReceiver */
-				//unregisterReceiver(adMobBroadcastReceiver);
 				
-				Intent intent = new Intent(getApplicationContext(), NovaNotaActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				
-			}
-		});
-		
-		
 		/* ListViewNotas */
 		listViewNotas = (ListView) findViewById(R.id.list_view_notas);
-		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
-		ArrayList<Nota> notas = notaDAO.getTodasNotas(); 
-	    adapterNota = new ArrayAdapterNota(getApplicationContext(), R.layout.item, notas);
 		listViewNotas.setAdapter(adapterNota);
-		
-		/* Número total de notas */
-		textViewNumeroNotas = (TextView) findViewById(R.id.tv_numero_notas);
-		textViewNumeroNotas.setText("( " + notas.size() + " )");
-		
+				
 		/* Click: visualizando uma nota */
 		listViewNotas.setOnItemClickListener(new OnItemClickListener() {
 
@@ -144,12 +125,11 @@ public class MainActivity extends ActionBarActivity {
 							
 						} else if (nameItem.equals(opcoesCustomAlertDialog[1])) { // deletar
 							AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(MainActivity.this);
-				          	deleteBuilder.setMessage("Você tem certeza que quer deletar essa nota?");
+				          	deleteBuilder.setMessage("Você tem certeza que quer deletar esta nota?");
 				          	deleteBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
-									NotaDAO notaDAO = new NotaDAO(getApplicationContext());					
 									notaDAO.deletarNota(idNota);
 																
 									/* atualizar o listView quando um item for deletado do banco */ 
@@ -157,10 +137,11 @@ public class MainActivity extends ActionBarActivity {
 									adapterNota.notifyDataSetChanged();
 									
 									/* Atualizar o número total de notas */
-									textViewNumeroNotas.setText("( " + notaDAO.getTotalNotas() + " )");
+									String subTitle = notaDAO.getNumeroTotalNotas();
+									actionBar.setSubtitle(subTitle +" notas");
 								}
 							});
-				          	deleteBuilder.setNegativeButton("Não", null);
+				          	deleteBuilder.setNegativeButton("Cancelar", null);
 				          	deleteBuilder.show();
 							
 						} else if (nameItem.equals(opcoesCustomAlertDialog[2])) { // compartilhar
@@ -210,6 +191,13 @@ public class MainActivity extends ActionBarActivity {
 	        share.putExtra(Intent.EXTRA_TEXT, appNotas);
 	        startActivity(Intent.createChooser(share, "Compartilhar \"Notas\" via"));
 			return true;
+			
+		} else if (id == R.id.action_create_note) {
+			Intent intent = new Intent(getApplicationContext(), NovaNotaActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+			
 		}
 		 
 		return super.onOptionsItemSelected(item);
@@ -245,35 +233,27 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	
+	private void configuracaoDoAmbiente() {
+		notaDAO = new NotaDAO(getApplicationContext());
+		notas = notaDAO.getTodasNotas(); 
+	    adapterNota = new ArrayAdapterNota(getApplicationContext(), R.layout.item, notas);
+	    
+		/* Configurando o ActionBar */
+		actionBar = getSupportActionBar();
+		String subTitle = notaDAO.getNumeroTotalNotas();
+		actionBar.setSubtitle(subTitle + " notas");
+		
+		adMobBroadcastReceiver = new AdMobBroadcastReceiver();
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	protected void onDestroy() {
+		actionBar = null;
+		adMobBroadcastReceiver = null;
+		notaDAO = null;
+		notas = null;
+		adapterNota = null;
+		super.onDestroy();
+	}
+		
 }

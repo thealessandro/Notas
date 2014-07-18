@@ -3,9 +3,12 @@ package com.kyxadious.notas;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +20,7 @@ import android.os.Build;
 
 public class SobreActivity extends ActionBarActivity {
 
+	private ActionBar actionBar;
 	private ImageView imageViewLogo;
 	
 	@Override
@@ -24,10 +28,8 @@ public class SobreActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sobre);
 		
-		/* ActionBar */
-		ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+		/* Configuração do ambiente do app */
+		configuracaoDoAmbiente();
         
         /* ImageView */
         imageViewLogo = (ImageView) findViewById(R.id.iv_sobre_logo);
@@ -59,5 +61,40 @@ public class SobreActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	private void configuracaoDoAmbiente() {
+		/* ActionBar */
+		actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
+		//String title = getResources().getString(R.string.title_activity_sobre);
+		//actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));
+        
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

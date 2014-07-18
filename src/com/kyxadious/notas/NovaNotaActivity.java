@@ -10,6 +10,7 @@ import com.kyxadious.notas.model.Nota;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.text.format.Time;
 import android.text.style.BackgroundColorSpan;
 import android.util.Log;
@@ -37,6 +38,7 @@ import android.os.Build;
 public class NovaNotaActivity extends ActionBarActivity {
 
 	private String corNota;
+	private ActionBar actionBar;
 	private TextView dataTextView;
 	private TextView horaTextView;
 	private EditText novaNotaEditText;
@@ -47,19 +49,14 @@ public class NovaNotaActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nova_nota);
 
-		/* ActionBar */
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
-				
+		/* Configurando o ambiente do app */
+		configuracaoDoAmbiente();
+		
 		/* TextView */
 		dataTextView = (TextView) findViewById(R.id.tv_nova_data);
 		horaTextView = (TextView) findViewById(R.id.tv_nova_hora);
 		novaNotaEditText = (EditText) findViewById(R.id.ed_nova_nota);
 		novaNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_nova_nota);
-		
-		/* Cor amarela padrão da nota */
-		corNota = "#f7f4b4";
 		
 		/* Configurando a hora atual para o horaTextView */
 		Time hojeTime = new Time();
@@ -144,7 +141,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 	/* Botão cancelar nova nota */
 	public void cancelarNota(View view) {
 		AlertDialog.Builder mensagemBuilder = new AlertDialog.Builder(this);
-		mensagemBuilder.setMessage("Você tem certeza que não quer salvar essa nota?");
+		mensagemBuilder.setMessage("Você tem certeza que quer cancelar esta nota?");
 		mensagemBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -157,7 +154,7 @@ public class NovaNotaActivity extends ActionBarActivity {
 			}
 		});
 		
-		mensagemBuilder.setNegativeButton("Não", null);
+		mensagemBuilder.setNegativeButton("Cancelar", null);
 		mensagemBuilder.show();
 	}
 	
@@ -183,6 +180,18 @@ public class NovaNotaActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void configuracaoDoAmbiente () {
+		/* Cor amarela padrão da nota */
+		corNota = "#f7f4b4";
+		
+		/* Configurando o ActionBar */
+		actionBar = getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
+		//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
+		//String title = getResources().getString(R.string.title_activity_nova_nota);
+		//actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));
+	}
 	
 
 }
