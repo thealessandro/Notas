@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
-        android:padding="10dp" >
+        android:padding="5dp" >
     </ListView>
 
     <com.google.android.gms.ads.AdView

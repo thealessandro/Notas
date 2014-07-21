@@ -175,8 +175,8 @@ public class EditarNotaActivity extends ActionBarActivity {
 	private void configuracaoDoAmbiente() {
 		/* ActionBar */
 		actionBar = getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
+		//actionBar.setDisplayHomeAsUpEnabled(true);
+		//actionBar.setHomeButtonEnabled(true);
 		//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
 		//String title = getResources().getString(R.string.title_activity_atualizar_nota);
 		//actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));

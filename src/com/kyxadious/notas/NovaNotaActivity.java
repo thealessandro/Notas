@@ -186,8 +186,8 @@ public class NovaNotaActivity extends ActionBarActivity {
 		
 		/* Configurando o ActionBar */
 		actionBar = getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
+		//actionBar.setDisplayHomeAsUpEnabled(true);
+		//actionBar.setHomeButtonEnabled(true);
 		//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
 		//String title = getResources().getString(R.string.title_activity_nova_nota);
 		//actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));
