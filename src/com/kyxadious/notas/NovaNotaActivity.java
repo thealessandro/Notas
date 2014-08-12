@@ -22,6 +22,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,8 +70,8 @@ public class NovaNotaActivity extends ActionBarActivity {
 		dataTextView.setText(dateFormat.format(hojeDate).toString());
 		
 		/* Ativando o foco do EditText */
-		novaNotaEditText.setFocusable(true);
-		novaNotaEditText.setFocusableInTouchMode(true);
+		//novaNotaEditText.setFocusable(true);
+		//novaNotaEditText.setFocusableInTouchMode(true);
 		
 	}
 	
@@ -125,15 +126,17 @@ public class NovaNotaActivity extends ActionBarActivity {
 		    NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		    notaDAO.addNota(nota);
 		
-		    Toast.makeText(getApplicationContext(), "Nota salva", Toast.LENGTH_SHORT).show();
+		    exibirToast("Nota salva", Toast.LENGTH_SHORT);
+		    //Toast.makeText(getApplicationContext(), "Nota salva", Toast.LENGTH_SHORT).show();
 		    
 		    /* Voltar para tela principal para listar todas as notas */
 		    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		    startActivity(intent);
 		
-		} else { 
-		    Toast.makeText(getApplicationContext(), "Escreva algo na nota", Toast.LENGTH_LONG).show();
+		} else {
+			exibirToast("Escreva algo na nota", Toast.LENGTH_LONG);
+		    //Toast.makeText(getApplicationContext(), "Escreva algo na nota", Toast.LENGTH_LONG).show();
 		    
 		}
 	}
@@ -178,6 +181,12 @@ public class NovaNotaActivity extends ActionBarActivity {
 			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void exibirToast(String texto, int toastLength){
+		Toast msgToast = Toast.makeText(getApplicationContext(), texto, toastLength);
+		msgToast.setGravity(Gravity.CENTER, 0, 0);
+		msgToast.show();
 	}
 
 	private void configuracaoDoAmbiente () {

@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,8 +60,8 @@ public class EditarNotaActivity extends ActionBarActivity {
 		editarNotaLinearLayout = (LinearLayout) findViewById(R.id.linear_layout_editar_nota);
 		
 		/* Ativando o foco do EditText */
-		editTextTexto.setFocusable(true);
-		editTextTexto.setFocusableInTouchMode(true);
+		//editTextTexto.setFocusable(true);
+		//editTextTexto.setFocusableInTouchMode(true);
 		
 		/* Alimentando os campos */
 		textViewData.setText(nota.getData());
@@ -123,7 +124,8 @@ public class EditarNotaActivity extends ActionBarActivity {
 		NotaDAO notaDAO = new NotaDAO(getApplicationContext());
 		notaDAO.atualizarNota(atualizarNota);
 		
-		Toast.makeText(getApplicationContext(), "Nota editada", Toast.LENGTH_SHORT).show();
+		exibirToast("Nota editada", Toast.LENGTH_SHORT);
+		//Toast.makeText(getApplicationContext(), "Nota editada", Toast.LENGTH_SHORT).show();
 		
 		//Voltar para tela principal para listar todas as notas 
 		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -171,6 +173,11 @@ public class EditarNotaActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void exibirToast(String texto, int toastLength){
+		Toast msgToast = Toast.makeText(getApplicationContext(), texto, toastLength);
+		msgToast.setGravity(Gravity.CENTER, 0, 0);
+		msgToast.show();
+	}
 	
 	private void configuracaoDoAmbiente() {
 		/* ActionBar */
