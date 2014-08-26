@@ -6,10 +6,11 @@
     android:background="#f7f4b4"
     android:orientation="vertical" >
 
+    <!-- Transparência de 20%: (20/100)*255 = 51 => Hex(51) = 33 -->
     <View
         android:layout_width="fill_parent"
         android:layout_height="5dp"
-        android:background="#c98c5f" />
+        android:background="#33000000" /> 
 
     <TextView
         android:id="@+id/tv_item_index"

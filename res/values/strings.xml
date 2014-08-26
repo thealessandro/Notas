@@ -6,16 +6,19 @@
     <string name="action_settings">Settings</string>
     <string name="action_about">Sobre</string>
     <string name="action_share">Compartilhar</string>
+    <string name="action_editar">Editar</string>
+    <string name="action_deletar">Deletar</string>
     <string name="action_create_note">Nova nota</string>
     <string name="criar_nota">Nova nota</string>
     <string name="title_activity_nova_nota">Nova Nota</string>
     <string name="salvar">Salvar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="versão_codigo">Versão 1.0.4</string>
+    <string name="versão_codigo">Versão 1.0.5</string>
     <string name="desenvolvido">Desenvolvido por Kyxadious</string>
     <string name="email">kyxadious@gmail.com</string>
     <string name="title_activity_nota">Nota</string>
     <string name="title_activity_atualizar_nota">Editar Nota</string>
     <string name="title_activity_sobre">Sobre Notas</string>
+    <string name="title_activity_abrir_nota">Abrir Nota</string>
 
 </resources>

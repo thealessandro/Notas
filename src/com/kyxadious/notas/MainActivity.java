@@ -42,6 +42,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -104,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
 				final int positionItem = position;
 				final String textoNota = textViewTexto.getText().toString();
 				final String idNota = textViewIndex.getText().toString();
-                final String[] opcoesCustomAlertDialog = { "Editar", "Deletar", "Compartilhar" };
+                final String[] opcoesCustomAlertDialog = { "Abrir" , "Editar", "Deletar", "Compartilhar" };
 			    final ArrayAdapter<String> arrayAdapterCustomAlertDialog = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_alert_dialog, R.id.tv_custom_alert_dialog, opcoesCustomAlertDialog);
 				
                 AlertDialog.Builder customBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -115,16 +116,22 @@ public class MainActivity extends ActionBarActivity {
 					public void onClick(DialogInterface dialog, int which) {
 						String nameItem = arrayAdapterCustomAlertDialog.getItem(which);
 						
-						if (nameItem.equals(opcoesCustomAlertDialog[0])) { // editar
+						if (nameItem.equals(opcoesCustomAlertDialog[0])) { // Abrir
+							Intent intent = new Intent(getApplicationContext(), AbrirNotaActivity.class);
+							intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							intent.putExtra(ID, idNota);
+							startActivity(intent);
+							
+						}else if (nameItem.equals(opcoesCustomAlertDialog[1])) { // Editar
 							Intent intent = new Intent(getApplicationContext(), EditarNotaActivity.class);
 							intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 							intent.putExtra(ID, idNota);
 							startActivity(intent);
 							
-						} else if (nameItem.equals(opcoesCustomAlertDialog[1])) { // deletar
+						} else if (nameItem.equals(opcoesCustomAlertDialog[2])) { // Deletar
 							AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(MainActivity.this);
-				          	deleteBuilder.setMessage("Você tem certeza que quer deletar esta nota?");
-				          	deleteBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+				          	deleteBuilder.setMessage("Esta nota será apagada. Você tem certeza?");
+				          	deleteBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
@@ -142,7 +149,7 @@ public class MainActivity extends ActionBarActivity {
 				          	deleteBuilder.setNegativeButton("Cancelar", null);
 				          	deleteBuilder.show();
 							
-						} else if (nameItem.equals(opcoesCustomAlertDialog[2])) { // compartilhar
+						} else if (nameItem.equals(opcoesCustomAlertDialog[3])) { // Compartilhar
 							Intent share = new Intent(Intent.ACTION_SEND);
 					        share.setType("text/plain");
 					        //share.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK); 

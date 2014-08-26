@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.Log;
 import android.app.AlertDialog;
 import android.app.ApplicationErrorReport.AnrInfo;
 import android.content.DialogInterface;
@@ -40,6 +41,7 @@ public class EditarNotaActivity extends ActionBarActivity {
 	private LinearLayout editarNotaLinearLayout;
 	
 	private static final String ID = "id";
+	private static final String TAG = EditarNotaActivity.class.getSimpleName();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +51,15 @@ public class EditarNotaActivity extends ActionBarActivity {
 		/* Configuração do ambiente do app */
 		configuracaoDoAmbiente();
 		
-		Intent intent = getIntent();
-		String idNota = intent.getStringExtra(ID);
-		nota = notaDAO.getNota(idNota);
-		corNota = nota.getCor();
+		try {
+		    Intent intent = getIntent();
+		    String idNota = intent.getStringExtra(ID);
+		    nota = notaDAO.getNota(idNota);
+		    corNota = nota.getCor();
+		} catch (Exception e) {
+			Log.d(TAG, "Problema com a Intent: "+e.toString());
+			exibirToast("Aconteceu algo de errado!", Toast.LENGTH_LONG);
+		}
 		
 		textViewData = (TextView) findViewById(R.id.tv_editar_data);
 		textViewHora = (TextView) findViewById(R.id.tv_editar_hora);
@@ -136,8 +143,8 @@ public class EditarNotaActivity extends ActionBarActivity {
 	
 	public void cancelarNota(View view) {
 		AlertDialog.Builder mensagemBuilder = new AlertDialog.Builder(this);
-		mensagemBuilder.setMessage("Você tem certeza que quer cancelar esta nota?");
-		mensagemBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+		mensagemBuilder.setMessage("Esta nota será cancelada. Você tem certeza disso?");
+		mensagemBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -184,10 +191,6 @@ public class EditarNotaActivity extends ActionBarActivity {
 		actionBar = getSupportActionBar();
 		//actionBar.setDisplayHomeAsUpEnabled(true);
 		//actionBar.setHomeButtonEnabled(true);
-		//actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
-		//String title = getResources().getString(R.string.title_activity_atualizar_nota);
-		//actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));
-		
 		notaDAO = new NotaDAO(getApplicationContext());
 		
 	}

@@ -144,8 +144,8 @@ public class NovaNotaActivity extends ActionBarActivity {
 	/* Botão cancelar nova nota */
 	public void cancelarNota(View view) {
 		AlertDialog.Builder mensagemBuilder = new AlertDialog.Builder(this);
-		mensagemBuilder.setMessage("Você tem certeza que quer cancelar esta nota?");
-		mensagemBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+		mensagemBuilder.setMessage("Esta nota será cancelada. Você tem certeza disso?");
+		mensagemBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
