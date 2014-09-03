@@ -1401,6 +1401,7 @@ containing a value of this type.
         public static final int action_editar=0x7f0a002d;
         public static final int action_settings=0x7f0a002a;
         public static final int action_share=0x7f0a002c;
+        public static final int ad_unit_id=0x7f0a003b;
         public static final int app_name=0x7f0a0028;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
