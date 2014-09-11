@@ -59,6 +59,7 @@
                 android:background="#80b49c" />
 
             <!-- EditeText com as anotações -->
+            <!-- android:scrollbars="vertical" -->
 
             <EditText
                 android:id="@+id/ed_nova_nota"
@@ -72,7 +73,6 @@
                 android:lines="100"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:scrollbars="vertical"
                 android:textSize="20sp" />
         </LinearLayout>
 

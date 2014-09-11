@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
 		configuracaoDoAmbiente();
 		
 		/* AdMob */
-		this.registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+		//this.registerReceiver(adMobBroadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 				
 		/* ListViewNotas */
 		listViewNotas = (ListView) findViewById(R.id.list_view_notas);
@@ -219,8 +219,9 @@ public class MainActivity extends ActionBarActivity {
 		    NetworkInfo currentNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
 	        NetworkInfo otherNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
 
+	        /*
 	        if (currentNetworkInfo.isConnected()) {      
-	        	/* AdMob */
+	        	// AdMob 
         		adView = (AdView) findViewById(R.id.adView);
         		AdRequest adRequest = new AdRequest.Builder().build();
         		adView.loadAd(adRequest);
@@ -233,6 +234,7 @@ public class MainActivity extends ActionBarActivity {
        		     	adView.setVisibility(View.GONE);	        	
 	       
 	        }
+	        */
 		}
 	}
 	
